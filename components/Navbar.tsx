@@ -1,10 +1,11 @@
 import { NavLinks } from '@/constants'
 import Image from 'next/image'
 import Link from 'next/link'
+import AuthProviders from './AuthProvider';
 
 
 const Navbar = () => {
-    const session = {};
+    const session = null;
 
     return (
         <nav className="flexBetween navbar">
