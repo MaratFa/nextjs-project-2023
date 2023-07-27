@@ -1,9 +1,9 @@
 import React from 'react'
 
-const AuthProvider = () => {
+const AuthProviders = () => {
   return (
     <div>AuthProvider</div>
   )
 }
 
-export default AuthProvider
+export default AuthProviders
