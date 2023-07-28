@@ -33,6 +33,7 @@ export const authOptions: NextAuthOptions = {
                 // get the user if they exist
 
                 // if they don't exist, create them  
+                
 
                 return true
             } catch (error: any) {
