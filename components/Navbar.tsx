@@ -34,18 +34,6 @@ const Navbar = async () => {
                     <>
                         <ProfileMenu session={session} />
 
-                        {session?.user?.image && (
-                            <Link href={`/profile/${session?.user?.id}`}>
-                                <Image
-                                    src={session.user.image}
-                                    width={40}
-                                    height={40}
-                                    className="rounded-full"
-                                    alt={session.user.name}
-                                />
-                            </Link>
-                        )}
-
                         <Link href="/create-project">
                             Share Work
                         </Link>
