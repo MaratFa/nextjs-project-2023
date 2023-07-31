@@ -15,6 +15,9 @@ const CustomMenu = ({ title, state, filters, setState }: Props) => {
             <label htmlFor={title} className="w-full text-gray-100">
                 {title}
             </label>
+            <Menu as="div" className="self-start relative">
+
+            </Menu>
         </div>
     )
 }
