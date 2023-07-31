@@ -1,8 +1,21 @@
-import React from 'react'
+import { Fragment } from 'react';
+import { Menu } from '@headlessui/react';
+import Image from 'next/image'
 
-const CustomMenu = () => {
+type Props = {
+    title: string;
+    state: string;
+    filters: Array<string>
+    setState: (value: string) => void;
+}
+
+const CustomMenu = ({ title, state, filters, setState }: Props) => {
     return (
-        <div>CustomMenu</div>
+        <div className="flexStart flex-col w-full gap-7 relative">
+            <label htmlFor={title} className="w-full text-gray-100">
+                {title}
+            </label>
+        </div>
     )
 }
 
