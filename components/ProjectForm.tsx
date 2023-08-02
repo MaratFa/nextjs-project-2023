@@ -2,10 +2,11 @@
 
 import { SessionInterface } from "@/common.types"
 import Image from "next/image";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import FormField from "./FormField";
 import { categoryFilters } from "@/constant";
 import CustomMenu from "./CustomMenu";
+import Button from "./Button";
 
 type Props = {
   type: string,
@@ -15,16 +16,43 @@ type Props = {
 const ProjectForm = ({ type, session }: Props) => {
 
   const handleFormSubmit = (e: React.FormEvent) => { };
-  const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => { };
+
+  const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+
+    if (!file.type.includes('image')) {
+      return alert('Pleasure upload an image file');
+    }
+
+    const reader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      const result = reader.result as string;
+
+      handleStateChange('image', result);
+    }
+  };
+
   const handleStateChange = (fieldName: string, value: string) => {
-
+    setform((prevState) =>
+      ({ ...prevState, [fieldName]: value }))
   };
 
-
-  const form = {
-    image: '',
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [form, setform] = useState({
     title: '',
-  };
+    description: '',
+    image: '',
+    liveSiteUrl: '',
+    githubUrl: '',
+    category: '',
+  })
 
   return (
     <form
@@ -52,6 +80,7 @@ const ProjectForm = ({ type, session }: Props) => {
           />
         )}
       </div>
+
       <FormField
         title="Title"
         state={form.title}
@@ -78,12 +107,6 @@ const ProjectForm = ({ type, session }: Props) => {
         placeholder="https://github.com"
         setState={(value) => handleStateChange('githubUrl', value)}
       />
-      <FormField
-        title="Title"
-        state={form.title}
-        placeholder="Flexibble"
-        setState={(value) => handleStateChange('title', value)}
-      />
 
       <CustomMenu
         title="Category"
@@ -93,7 +116,16 @@ const ProjectForm = ({ type, session }: Props) => {
       />
 
       <div className="flexStart w-full">
-        <button>Create</button>
+        <Button
+          title={
+            isSubmitting
+              ? `${type === 'create' ? 'Creating' : 'Editing'}`
+              : `${type === 'create' ? 'Create' : 'Edit'}`
+          }
+          type="submit"
+          leftIcon={isSubmitting ? "" : '/plus.svg'}
+          isSubmitting={isSubmitting}
+        />
       </div>
     </form>
   )
