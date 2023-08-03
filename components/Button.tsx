@@ -18,7 +18,8 @@ const Button = ({ title, leftIcon, rightIcon, handleClick, isSubmitting, type, b
             type={type || 'button'}
             disabled={isSubmitting}
             className={`flexCenter gap-3 px-4 py-3
-            ${isSubmitting ? 'bg-black/50' : bgColor ? bgColor : 'bg-primary-purple'}
+            ${textColor || 'text-white'}
+            ${isSubmitting ? 'bg-black/50' : bgColor || 'bg-primary-purple'} rounded-xl text-sm font-medium max-md:w-full
             `}
             onClick={handleClick}
         >
