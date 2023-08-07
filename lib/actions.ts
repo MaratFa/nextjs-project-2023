@@ -25,7 +25,7 @@ export const uploadImage = async (imagePath: string) => {
             method: 'POST',
             body: JSON.stringify({
                 path: imagePath,
-            })
+            }),
         });
         return response.json();
     } catch (err) {
@@ -42,10 +42,10 @@ const makeGraphQLRequest = async (query: string, variables = {}) => {
 };
 
 export const fetchAllProjects = async (category?: string, endcursor?: string) => {
-    client.setHeader('x-api-key', apiKey);
+    client.setHeader("x-api-key", apiKey);
 
-    return makeGraphQLRequest(projectsQuery, { category, endcursor })
-}
+    return makeGraphQLRequest(projectsQuery, { category, endcursor });
+};
 
 export const createNewProject = async (form: ProjectForm, creatorId: string, token: string) => {
     const imageUrl = await uploadImage(form.image);
