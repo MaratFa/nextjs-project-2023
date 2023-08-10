@@ -100,6 +100,7 @@ export const createNewProject = async (form: ProjectForm, creatorId: string, tok
 
 
 
+
 export const getProjectDetails = (id: string) => {
     client.setHeader('x-api-key', apiKey);
     try {
