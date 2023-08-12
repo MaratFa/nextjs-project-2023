@@ -1,5 +1,6 @@
 import { ProjectInterface } from '@/common.types';
 import { getProjectDetails } from '@/lib/actions';
+
 import { getCurrentUser } from '@/lib/session'
 
 const Project = async ({ params: { id } }: { params: { id: string } }) => {
