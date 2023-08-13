@@ -78,7 +78,7 @@ const Project = async ({ params: { id } }: { params: { id: string } }) => {
                     </Link>
                     <Image src="/dot.svg" width={4} height={4} alt="dot" />
                     <Link href={projectDetails?.liveSiteUrl} target="_blank" rel="noreferrer" className="flexCenter gap-2 tex-sm font-medium text-primary-purple">
-                        🚀 <span className="underline">Live Site</span>
+                        <span className="underline">Live Site</span>
                     </Link>
                 </div>
             </section>
