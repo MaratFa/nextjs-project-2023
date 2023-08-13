@@ -9,25 +9,25 @@ import Button from "./Button";
 import CustomMenu from "./CustomMenu";
 import { categoryFilters } from "@/constant";
 import { createNewProject, fetchToken } from "@/lib/actions";
-import { FormState, SessionInterface } from "@/common.types"
+import { FormState, ProjectInterface, SessionInterface } from "@/common.types"
 
 type Props = {
   type: string,
   session: SessionInterface,
-
+  project?: ProjectInterface
 }
 
-const ProjectForm = ({ type, session }: Props) => {
+const ProjectForm = ({ type, session, project }: Props) => {
   const router = useRouter();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setform] = useState({
-    title: '',
-    description: '',
-    image: '',
-    liveSiteUrl: '',
-    githubUrl: '',
-    category: '',
+    title: project?.title || '',
+    description: project?.description || '',
+    image: project?.image || '',
+    liveSiteUrl: project?.liveSiteUrl || '',
+    githubUrl: project?.githubUrl || '',
+    category: project?.category || '',
   })
 
   const handleStateChange = (fieldName: keyof FormState, value: string) => {
@@ -76,8 +76,7 @@ const ProjectForm = ({ type, session }: Props) => {
 
 
 
-
-
+      if (type === 'edit') { }
     } catch (error) {
       console.log(error)
     } finally {
