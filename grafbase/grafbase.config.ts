@@ -1,7 +1,6 @@
 import { g, auth, config } from '@grafbase/sdk'
 
 // @ts-ignore
-
 const User = g.model('User', {
   name: g.string().length({ min: 2, max: 20 }),
   email: g.string().unique(),
@@ -9,6 +8,7 @@ const User = g.model('User', {
   description: g.string().optional(),
   githubUrl: g.url().optional(),
   linkedinUrl: g.url().optional(),
+  // @ts-ignore
   projects: g.relation(() => Project).list().optional(),
 }).auth((rules) => {
   rules.public().read()
