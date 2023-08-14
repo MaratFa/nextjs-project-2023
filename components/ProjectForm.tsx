@@ -113,16 +113,14 @@ const ProjectForm = ({ type, session, project }: Props) => {
         title="Title"
         state={form.title}
         placeholder="Flexibble"
-        setState={(value) => handleStateChange('title', value)}
-      />
+        setState={(value) => handleStateChange('title', value)} type={""} />
 
       <FormField
         title="Description"
         state={form.description}
         placeholder="Showcase and discower remarkable developer projects."
         isTextArea
-        setState={(value) => handleStateChange('description', value)}
-      />
+        setState={(value) => handleStateChange('description', value)} type={""} />
 
       <FormField
         type="url"
